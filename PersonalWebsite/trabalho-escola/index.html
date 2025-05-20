@@ -1,0 +1,501 @@
+<!DOCTYPE html> 
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ritme Web Studio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --azul-marinho: #0a192f;
+      --zinco: #e6f1ff;
+      --destaque: #64ffda;
+      --destaque-escuro: #1e7f6b;
+    }
+    
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background-color: var(--azul-marinho);
+      color: var(--zinco);
+      background-image: url('images/fundo-tecnologico.jpg');
+      background-blend-mode: overlay;
+      background-size: cover;
+      line-height: 1.6;
+    }
+    
+    header {
+      background-color: rgba(10, 25, 47, 0.9);
+      padding: 60px 20px;
+      text-align: center;
+      border-bottom: 3px solid var(--destaque);
+    }
+    
+    header h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 3.2em;
+      margin: 0;
+      color: var(--destaque);
+      letter-spacing: 2px;
+    }
+    
+    header p {
+      font-size: 1.2em;
+      margin-top: 10px;
+      opacity: 0.9;
+    }
+    
+    section {
+      padding: 50px 20px;
+      max-width: 1000px;
+      margin: 40px auto;
+      background-color: rgba(10, 25, 47, 0.85);
+      backdrop-filter: blur(5px);
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+    
+    h2 {
+      color: var(--destaque);
+      font-family: 'Orbitron', sans-serif;
+      border-bottom: 2px solid var(--destaque);
+      padding-bottom: 8px;
+      letter-spacing: 1px;
+      margin-top: 0;
+    }
+    
+    .equipe {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+    
+    .membro {
+      background: rgba(16, 42, 82, 0.7);
+      padding: 25px;
+      border-radius: 8px;
+      border-top: 3px solid var(--destaque);
+      transition: transform 0.3s;
+    }
+    
+    .membro:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+    
+    .membro h3 {
+      color: var(--destaque);
+      margin-top: 0;
+      font-family: 'Orbitron', sans-serif;
+    }
+    
+    .funcao {
+      color: var(--destaque-escuro);
+      font-weight: bold;
+      margin: 10px 0;
+      display: block;
+    }
+    
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    
+    li {
+      padding: 8px 0;
+      position: relative;
+      padding-left: 30px;
+    }
+    
+    li::before {
+      content: "▹";
+      position: absolute;
+      left: 0;
+      color: var(--destaque);
+    }
+    
+    .servico-card {
+      background: rgba(16, 42, 82, 0.7);
+      margin-bottom: 20px;
+      padding: 25px;
+      border-radius: 8px;
+      border-left: 3px solid var(--destaque);
+      transition: transform 0.3s;
+    }
+    
+    .servico-card:hover {
+      transform: translateX(5px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    
+    .servico-titulo {
+      display: flex;
+      align-items: center;
+      font-family: 'Orbitron', sans-serif;
+      color: var(--destaque);
+      margin-top: 0;
+      margin-bottom: 15px;
+    }
+    
+    .servico-titulo i {
+      margin-right: 10px;
+      font-size: 1.3em;
+    }
+    
+    .servico-items {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 10px;
+    }
+    
+    .servico-item {
+      background: rgba(10, 25, 47, 0.5);
+      padding: 15px;
+      border-radius: 6px;
+      border-bottom: 2px solid var(--destaque-escuro);
+    }
+    
+    .produto-adicional {
+      background: rgba(30, 50, 90, 0.7);
+      padding: 20px;
+      margin-top: 15px;
+      border-radius: 8px;
+      border-top: 2px solid var(--destaque);
+    }
+    
+    .produto-titulo {
+      color: var(--destaque);
+      font-family: 'Orbitron', sans-serif;
+      margin-top: 0;
+    }
+    
+    .pagamento-item {
+      background: rgba(10, 25, 47, 0.7);
+      padding: 10px 15px;
+      border-radius: 4px;
+      display: inline-block;
+      margin: 5px;
+      font-weight: bold;
+      border-left: 2px solid var(--destaque);
+    }
+    
+    footer {
+      text-align: center;
+      padding: 25px;
+      font-size: 0.9em;
+      background-color: rgba(10, 25, 47, 0.95);
+      border-top: 2px solid var(--destaque);
+      margin-top: 60px;
+    }
+
+    .colaboradores {
+      margin-top: 10px;
+      font-weight: bold;
+      color: var(--destaque);
+    }
+
+    .tech-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 20% 30%, rgba(100, 255, 218, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(100, 255, 218, 0.05) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: -1;
+    }
+    
+    .destaque-section {
+      border-left: 4px solid var(--destaque);
+      padding-left: 20px;
+      margin: 30px 0;
+    }
+    
+    .emoji-icon {
+      margin-right: 10px;
+      font-size: 1.2em;
+    }
+    
+    .visao-card {
+      background: rgba(16, 42, 82, 0.7);
+      padding: 25px;
+      margin: 15px 0;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      border-left: 3px solid var(--destaque);
+    }
+    
+    .visao-card .emoji-icon {
+      font-size: 2em;
+      margin-right: 20px;
+    }
+    
+    .visao-content {
+      flex: 1;
+    }
+    
+    .visao-content h3 {
+      color: var(--destaque);
+      margin-top: 0;
+      font-family: 'Orbitron', sans-serif;
+    }
+    
+    .tech-badge {
+      background: rgba(10, 25, 47, 0.7);
+      padding: 8px 15px;
+      border-radius: 20px;
+      display: inline-block;
+      margin: 5px;
+      font-weight: bold;
+      border: 1px solid var(--destaque);
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.9em;
+      letter-spacing: 1px;
+    }
+    
+    .pagamentos {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="tech-overlay"></div>
+  
+  <header>
+    <h1>⚡ Ritme Web Studio</h1>
+    <p>Tecnologia que Impulsiona seu Negócio Digital</p>
+  </header>
+  
+  <section>
+    <h2><span class="emoji-icon">🚀</span>Transformação Digital Para Seu Negócio</h2>
+    
+    <div class="visao-card">
+      <span class="emoji-icon">🔭</span>
+      <div class="visao-content">
+        <h3>Missão</h3>
+        <p>Democratizar o acesso à tecnologia e impulsionar negócios através de soluções digitais inovadoras, transformando ideias em resultados mensuráveis para nossos clientes.</p>
+      </div>
+    </div>
+    
+    <div class="visao-card">
+      <span class="emoji-icon">💡</span>
+      <div class="visao-content">
+        <h3>Visão</h3>
+        <p>Ser referência nacional em desenvolvimento web e transformação digital, criando ecossistemas tecnológicos que conectam empresas ao futuro e expandem suas possibilidades de crescimento.</p>
+      </div>
+    </div>
+    
+    <div class="visao-card">
+      <span class="emoji-icon">🤝</span>
+      <div class="visao-content">
+        <h3>Compromisso</h3>
+        <p>Entregas dentro do prazo, comunicação transparente e resultados acima das expectativas. Trabalhamos como extensão do seu negócio, comprometidos com sua evolução digital constante.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji-icon">📌</span>Serviços Principais</h2>
+    
+    <div class="servico-card">
+      <h3 class="servico-titulo"><span class="emoji-icon">🌐</span>1. Criação de Sites</h3>
+      <div class="servico-items">
+        <div class="servico-item">
+          <b>Site Institucional</b>
+          <p>Para empresas e profissionais liberais, com design premium e otimizado para conversão.</p>
+        </div>
+        <div class="servico-item">
+          <b>Landing Page</b>
+          <p>Página única de alta conversão para promoções e captação de leads qualificados.</p>
+        </div>
+        <div class="servico-item">
+          <b>Blog Personalizado</b>
+          <p>Com WordPress e SEO básico para impulsionar sua estratégia de conteúdo e propaganda.</p>
+        </div>
+        <div class="servico-item">
+          <b>Site One-Page</b>
+          <p>Solução ideal para portfolios e apresentação de serviços de forma objetiva.</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="servico-card">
+      <h3 class="servico-titulo"><span class="emoji-icon">🛒</span>2. E-commerce (Lojas Virtuais)</h3>
+      <div class="servico-items">
+        <div class="servico-item">
+          <b>Loja com WooCommerce</b>
+          <p>Plataforma robusta baseada em WordPress para sua operação digital.</p>
+        </div>
+        <div class="servico-item">
+          <b>Integração de Pagamentos</b>
+          <p>Suporte a Pix, Mercado Pago, PagSeguro e outras plataformas de pagamento.</p>
+        </div>
+        <div class="servico-item">
+          <b>Cadastro de Produtos + SEO</b>
+          <p>Estruturação otimizada para mecanismos de busca e vendas.</p>
+        </div>
+        <div class="servico-item">
+          <b>Design Responsivo</b>
+          <p>Experiência perfeita em dispositivos móveis para maior conversão.</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="servico-card">
+      <h3 class="servico-titulo"><span class="emoji-icon">🔧</span>3. Manutenção & Suporte</h3>
+      <div class="servico-items">
+        <div class="servico-item">
+          <b>Atualização de Plugins</b>
+          <p>Manutenção contínua de segurança e funcionalidades.</p>
+        </div>
+        <div class="servico-item">
+          <b>Backup Mensal</b>
+          <p>Proteção completa para seus dados e conteúdo digital.</p>
+        </div>
+        <div class="servico-item">
+          <b>Suporte Técnico</b>
+          <p>Atendimento especializado de até 12 horas mensais.</p>
+        </div>
+        <div class="servico-item">
+          <b>Otimização de Velocidade</b>
+          <p>Ajustes técnicos para máxima performance e experiência do usuário.</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="servico-card">
+      <h3 class="servico-titulo"><span class="emoji-icon">📊</span>4. Marketing Digital Integrado</h3>
+      <div class="servico-items">
+        <div class="servico-item">
+          <b>SEO Básico</b>
+          <p>Otimização técnica para melhores posicionamentos no Google.</p>
+        </div>
+        <div class="servico-item">
+          <b>Google Meu Negócio</b>
+          <p>Cadastro e otimização para presença em buscas locais.</p>
+        </div>
+        <div class="servico-item">
+          <b>Integração com Redes Sociais</b>
+          <p>Botões de compartilhamento e feed integrado no site.</p>
+        </div>
+        <div class="servico-item">
+          <b>Google Analytics</b>
+          <p>Instalação e configuração para monitoramento de performance.</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="destaque-section">
+      <h3><span class="emoji-icon">📦</span>Produtos Adicionais</h3>
+      
+      <div class="produto-adicional">
+        <h4 class="produto-titulo">1. Templates Prontos (Site + Hospedagem)</h4>
+        <div class="servico-items">
+          <div class="servico-item">
+            <b>"Site Express"</b>
+            <p>Modelo pré-pronto personalizável de alta qualidade</p>
+          </div>
+          <div class="servico-item">
+            <b>"Loja Rápida"</b>
+            <p>E-commerce básico pronto para vendas</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="produto-adicional">
+        <h4 class="produto-titulo">2. Domínios & Hospedagem</h4>
+        <div class="servico-items">
+          <div class="servico-item">
+            <b>Registro de Domínio + Hospedagem</b>
+            <p>Domínios .com.br ou .com com 1 ano de hospedagem premium</p>
+          </div>
+          <div class="servico-item">
+            <b>Pacote de E-mail Profissional</b>
+            <p>Ex: contato@personalwebsite.com.br</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section>
+    <h2><span class="emoji-icon">💳</span>Formas de Pagamento</h2>
+    <p>Oferecemos diversas opções de pagamento para facilitar seu investimento em tecnologia:</p>
+    
+    <div class="pagamentos">
+      <div class="pagamento-item">Cartão de Crédito (até 12x)</div>
+      <div class="pagamento-item">Cartão de Débito</div>
+      <div class="pagamento-item">Pix</div>
+      <div class="pagamento-item">Boleto Bancário</div>
+      <div class="pagamento-item">Transferência Bancária</div>
+    </div>
+    
+    <p style="text-align: center; margin-top: 30px;">Entre em contato para um orçamento personalizado para seu projeto!</p>
+  </section>
+
+  <section>
+    <h2>Tecnologias</h2>
+    <p>Utilizamos o que há de mais avançado no mercado para garantir soluções robustas, seguras e escaláveis:</p>
+    
+    <div style="text-align: center; margin: 30px 0;">
+      <span class="tech-badge">React</span>
+      <span class="tech-badge">Vue.js</span>
+      <span class="tech-badge">TypeScript</span>
+      <span class="tech-badge">Node.js</span>
+      <span class="tech-badge">Python</span>
+      <span class="tech-badge">Go</span>
+      <span class="tech-badge">React Native</span>
+      <span class="tech-badge">Flutter</span>
+      <span class="tech-badge">Docker</span>
+      <span class="tech-badge">Kubernetes</span>
+      <span class="tech-badge">Terraform</span>
+      <span class="tech-badge">WordPress</span>
+    </div>
+  </section>
+  
+  <section>
+    <h2><span class="emoji-icon">👥</span>Nossa Equipe</h2>
+    <p>Contamos com profissionais altamente qualificados, atualizados com as mais recentes tendências e tecnologias do mercado:</p>
+    
+    <div class="equipe">
+      <div class="membro">
+        <h3>Vitor</h3>
+        <span class="funcao">CTO - Chief Technology Officer</span>
+        <p>Especialista em arquitetura de sistemas e soluções escaláveis. Lidera nossa visão tecnológica e inovação.</p>
+      </div>
+      
+      <div class="membro">
+        <h3>Vicente</h3>
+        <span class="funcao">Full-Stack Developer</span>
+        <p>Desenvolvedor especializado em React e Node.js, com foco em aplicações web de alta performance.</p>
+      </div>
+      
+      <div class="membro">
+        <h3>Francisco</h3>
+        <span class="funcao">UX/UI Designer</span>
+        <p>Cria experiências digitais intuitivas e interfaces que encantam os usuários.</p>
+      </div>
+      
+      <div class="membro">
+        <h3>Felipe</h3>
+        <span class="funcao">DevOps Engineer</span>
+        <p>Garante a infraestrutura cloud, CI/CD e monitoramento de alta disponibilidade.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Ritme Web Studio. Todos os direitos reservados.</p>
+    <p class="colaboradores">Colaboradores: Vitor, Vicente, Francisco e Felipe</p>
+  </footer>
+</body>
+</html>
+
